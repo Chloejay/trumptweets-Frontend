@@ -3,16 +3,49 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      nodes: []
+    }
+  }
+
+  componentDidMount = () =>
+  {
+    const keywords= `
+{
+  allKeywordtests {
+    edges {
+      node {
+        keyword
+        keywordCount
+      }
+    }
+  }
+}`
+    fetch('https://trumptweetsdata.herokuapp.com/graphql', 
+      {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ query: keywords }), 
+      })
+      .then(res => res.json())
+      .then(res => {
+        let nodes = res.data.allKeywordtests.edges.reduce((acc, nxt, i ) => {
+          return [...acc, nxt.node]
+        },[])
+        this.setState({nodes})
+      })
+  }
+
+
+
+
   render() {
+    console.log('this.state.nodes: ', this.state.nodes);
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div>data</div>        
       </div>
     );
   }
