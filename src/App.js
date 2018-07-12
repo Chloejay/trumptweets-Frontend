@@ -1,9 +1,7 @@
 import React from 'react';
-import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
 import Keywords from './keyword.js'; 
 import {ApolloProvider} from 'react-apollo'; 
-import ApolloClient from 'apollo-boost'; 
+import ApolloClient from 'apollo-boost';  
 
 const client = new ApolloClient({
    uri: 'https://trumptweetsdata.herokuapp.com/graphql'
@@ -11,10 +9,10 @@ const client = new ApolloClient({
 
 const App=()=>(
     <ApolloProvider client={client}>
-    <div>
+      <div>
         <Keywords />
-    </div> 
-    </ApolloProvider>  
+      </div> 
+    </ApolloProvider>   
   ); 
 
-export default App; 
+export default App;  
