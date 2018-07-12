@@ -13,7 +13,7 @@ const Keywords = () =>(
           node {
             keyword
             keywordCount
-          }
+         }
         }
       }
     }`
@@ -23,13 +23,17 @@ const Keywords = () =>(
             if (loading) return <p>Loading now ...</p>;
             if (error) return <p>Error! </p>; 
 
-            console.log(data.allKeywordtests.edges[0].node.keywordCount)
-            
+            //console.log(data.allKeywordtests.edges[0].node.keywordCount)
+            const style= {fontSize: 14, color: 'black', 
+                          border: 'solid' ,
+                          borderColor: 'grey',
+                          borderWidth: 1, 
+                          padding: 2}; 
             return data.allKeywordtests.edges.map(({node: {keyword , keywordCount }}, i) => (
-              <div key={i}>
-                <div>{keyword}</div> 
-                <div>{keywordCount}</div> 
-              </div> 
+              <tbody key={i}>
+                <td style={style}>{keyword}</td> 
+                <td style={style}>{keywordCount}</td>  
+              </tbody>  
             )); 
         }}
     </Query> 
