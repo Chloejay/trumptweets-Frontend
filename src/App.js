@@ -10,7 +10,10 @@ const client = new ApolloClient({
 const App=()=>(
     <ApolloProvider client={client}>
       <div>
-        <Keywords />
+
+    <h2>Trump Tweet Analysis</h2> 
+    <h4>Top 50th ranking keyword</h4> 
+    <Keywords />
       </div> 
     </ApolloProvider>   
   ); 

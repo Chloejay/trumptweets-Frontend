@@ -11,14 +11,14 @@ const Keywords = () =>(
       allKeywordtests(first:50) {
         edges {
           node {
-            keyword
+            keyword 
             keywordCount
          }
         }
       }
     }`
   }   
->
+> 
         {({loading, error, data}) => {
             if (loading) return <p>Loading now ...</p>;
             if (error) return <p>Error! </p>; 
